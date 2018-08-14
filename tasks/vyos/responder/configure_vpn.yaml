@@ -1,0 +1,6 @@
+---
+
+- name: Push configuration to VyOS device
+  vyos_config:
+    src: "vyos/responder/{{ cloud_vpn_initiator_provider }}/configure_{{ cloud_vpn_routing }}.j2"
+  delegate_to: responder

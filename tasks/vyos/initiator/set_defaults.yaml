@@ -1,0 +1,17 @@
+---
+
+- name: Set ansible_connection fact to 'network_cli'
+  set_fact:
+    cloud_vpn_initiator_ansible_connection: network_cli
+
+- name: Set ansible_network_os fact to 'vyos'
+  set_fact:
+    cloud_vpn_initiator_ansible_network_os: vyos
+
+- name: Set initiator user fact to 'vyos' if not defined
+  set_fact:
+    cloud_vpn_initiator_user: "{{ cloud_vpn_initiator_user | default('vyos') }}"
+
+- name: Set initiator outside interface fact to 'eth0' if not defined
+  set_fact:
+    cloud_vpn_initiator_outside_interface: "{{ cloud_vpn_initiator_outside_interface | default('eth0') }}"
